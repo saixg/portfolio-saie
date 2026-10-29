@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #111112;
+  --accent: #ea0044;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  background: var(--bg);
+}
+
+body {
+  color: #fafafa;
+  font-family: Roboto, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@layer components {
+  /* Framer draws borders on ::after at 1 device pixel; mirror that. */
+  .hairline {
+    position: relative;
+  }
+  .hairline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid var(--hairline, rgba(84, 84, 84, 0.5));
+    pointer-events: none;
+  }
+  @media (min-resolution: 2dppx) {
+    .hairline::after {
+      border-width: 0.5px;
+    }
+  }
+
+  .glass {
+    background: rgba(130, 130, 130, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Glossy crimson pill: outer glow + stacked white inset highlights. */
+  .gloss-accent {
+    background: #ea0044;
+    box-shadow:
+      rgba(234, 0, 68, 0.68) 0 0.48px 0.87px -1.17px,
+      rgba(234, 0, 68, 0.61) 0 1.83px 3.3px -2.33px,
+      rgba(234, 0, 68, 0.3) 0 8px 14.4px -3.5px,
+      rgba(255, 255, 255, 0.91) 0.32px 0.44px 0.32px -1.19px inset,
+      rgba(255, 255, 255, 0.84) 0.97px 1.33px 0.99px -2.38px inset,
+      rgba(255, 255, 255, 0.66) 2.55px 3.51px 2.6px -3.56px inset,
+      rgba(255, 255, 255, 0.05) 8px 11px 8.16px -4.75px inset;
+  }
+
+  .gloss-dark {
+    background: #111112;
+    box-shadow:
+      rgba(10, 10, 10, 0.68) 0 0.48px 0.87px -1.17px,
+      rgba(10, 10, 10, 0.61) 0 1.83px 3.3px -2.33px,
+      rgba(10, 10, 10, 0.3) 0 8px 14.4px -3.5px,
+      rgba(255, 255, 255, 0.35) 0.32px 0.44px 0.32px -1.19px inset,
+      rgba(255, 255, 255, 0.25) 0.97px 1.33px 0.99px -2.38px inset,
+      rgba(255, 255, 255, 0.15) 2.55px 3.51px 2.6px -3.56px inset;
+  }
+
+  .card-shadow {
+    box-shadow:
+      rgba(0, 0, 0, 0.07) 0 0.6px 0.6px -0.94px,
+      rgba(0, 0, 0, 0.07) 0 1.81px 1.81px -1.88px,
+      rgba(0, 0, 0, 0.06) 0 4.79px 4.79px -2.81px,
+      rgba(0, 0, 0, 0.03) 0 15px 15px -3.75px;
+  }
+
+  .section-heading {
+    font-family: 'Space Grotesk', Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 810px) {
+    .section-heading {
+      font-size: 60px;
+      line-height: 66px;
+    }
+  }
+
+  .shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1080px;
+    padding-inline: 22px;
+  }
+  @media (min-width: 810px) {
+    .shell {
+      padding-inline: 44px;
+    }
+  }
+}
