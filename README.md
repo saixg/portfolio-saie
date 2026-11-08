@@ -2,7 +2,7 @@
 
 Personal portfolio for G. Sai Gireesh Reddy, AI/ML Engineer (Generative AI). Built with React, TypeScript, Tailwind CSS and Framer Motion.
 
-**Live:** run locally with the steps below.
+**Live:** run locally with the steps below -.
 
 ## Stack
 
